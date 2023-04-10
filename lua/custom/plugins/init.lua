@@ -1,5 +1,20 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
-return {}
+return {
+  {
+    'johnfrankmorgan/whitespace.nvim',
+        config = function()
+          require('whitespace-nvim').setup({
+          -- configuration options and their defaults
+
+          -- `highlight` configures which highlight is used to display
+          -- trailing whitespace
+          highlight = 'DiffDelete',
+
+          -- `ignored_filetypes` configures which filetypes to ignore when
+          -- displaying trailing whitespace
+          ignored_filetypes = { 'TelescopePrompt', 'Trouble', 'help' },
+          })
+          -- remove trailing whitespace with a keybinding
+          vim.keymap.set('n', '<Leader>t', require('whitespace-nvim').trim)
+        end,
+  }
+}
