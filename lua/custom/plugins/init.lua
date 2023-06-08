@@ -16,5 +16,11 @@ return {
           -- remove trailing whitespace with a keybinding
           vim.keymap.set('n', '<Leader>t', require('whitespace-nvim').trim)
         end,
+  },
+  {
+    'ggandor/leap.nvim',
+      config = function()
+        require('leap').add_default_mappings()
+      end,
   }
 }
