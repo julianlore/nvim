@@ -31,5 +31,13 @@ return {
   },
   {
     'HiPhish/nvim-ts-rainbow2'
-  }
+  },
+  {
+  "nvim-telescope/telescope-frecency.nvim",
+  config = function()
+    require("telescope").load_extension("frecency")
+  end,
+  dependencies = {"kkharji/sqlite.lua"}
+  },
+  { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 }
