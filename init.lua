@@ -231,6 +231,7 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
+vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[S]earch [C]ommands' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -307,6 +308,11 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
+  rainbow = {
+    enable = true,
+    query = 'rainbow-parens',
+    strategy = require('ts-rainbow').strategy.global,
+  }
 }
 
 -- Diagnostic keymaps

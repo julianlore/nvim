@@ -22,5 +22,14 @@ return {
       config = function()
         require('leap').add_default_mappings()
       end,
+  },
+  {
+    'windwp/nvim-autopairs',
+      config = function ()
+        require('nvim-autopairs').setup {}
+      end
+  },
+  {
+    'HiPhish/nvim-ts-rainbow2'
   }
 }
