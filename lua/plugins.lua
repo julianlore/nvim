@@ -7,6 +7,13 @@ return {
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- "gc" to comment visual regions/lines
+  'numToStr/Comment.nvim',
+
+  'HiPhish/nvim-ts-rainbow2',
+  'stevearc/dressing.nvim',
+
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
@@ -77,9 +84,6 @@ return {
     },
   },
 
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
-
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
 
@@ -132,9 +136,6 @@ return {
       config = function ()
         require('nvim-autopairs').setup {}
       end
-  },
-  {
-    'HiPhish/nvim-ts-rainbow2'
   },
   {
   "smartpde/telescope-recent-files",

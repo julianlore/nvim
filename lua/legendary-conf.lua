@@ -1,5 +1,6 @@
 return {
   keymaps = {
+    { '<F1>', "<Cmd>Legendary<CR>", description = "Legendary"},
     -- Keymaps for better default experience
     -- See `:help vim.keymap.set()`
     { '<Space>', '<Nop>', opts = { silent = true } },
