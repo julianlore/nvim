@@ -26,6 +26,15 @@ return {
     { '<leader>sg', require('telescope.builtin').live_grep, description = '[S]earch by [G]rep' },
     { '<leader>sd', require('telescope.builtin').diagnostics, description = '[S]earch [D]iagnostics' },
 
+    -- Telekasten
+    { '<leader>zz', "<cmd>Telekasten panel<CR>", description = "Telekasten Panel"},
+    { '<leader>zf', "<cmd>Telekasten find_notes<CR>", description = "Telekasten [F]ind Notes"},
+    { '<leader>zg', "<cmd>Telekasten search_notes<CR>", description = "Telekasten [G]rep Notes"},
+    { '<leader>zd', "<cmd>Telekasten find_daily_notes<CR>", description = "Telekasten [D]aily Notes"},
+    { '<leader>zb', "<cmd>Telekasten show_backlinks<CR>", description = "Telekasten [B]acklinks"},
+    { '<leader>zi', "<cmd>Telekasten insert_link<CR>", description = "Telekasten [I]nsert Link" },
+    { '<leader>z<CR>', "<cmd>Telekasten follow_link<CR>", description = "Telekasten Follow Link"},
+
     -- Diagnostics
     { '[d', vim.diagnostic.goto_prev, "Go to previous diagnostic message" },
     {']d', vim.diagnostic.goto_next, "Go to next diagnostic message" },
