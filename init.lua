@@ -408,6 +408,18 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+-- Linters and formatters
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.code_actions.proselint,
+    null_ls.builtins.completion.spell,
+    null_ls.builtins.diagnostics.markdownlint,
+    null_ls.builtins.formatting.prettierd,
+  },
+})
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'

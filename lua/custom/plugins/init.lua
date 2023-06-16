@@ -40,4 +40,14 @@ return {
   dependencies = {"kkharji/sqlite.lua"}
   },
   { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'renerocksai/telekasten.nvim',
+      config = function ()
+        require('telekasten').setup({
+          home = os.getenv("TELEKASTEN_DIR"),
+          auto_set_filetype = false,
+      })
+      end,
+      dependencies = { 'nvim-telescope/telescope.nvim' }
+  },
+  { 'ixru/nvim-markdown' },
 }
