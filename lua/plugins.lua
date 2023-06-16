@@ -168,4 +168,9 @@ return {
         require('remember').setup {}
       end
   },
+  { 'mrjones2014/legendary.nvim',
+      config = function()
+        require('legendary').setup(require('legendary-conf'))
+      end
+  },
 }
