@@ -33,11 +33,10 @@ return {
     'HiPhish/nvim-ts-rainbow2'
   },
   {
-  "nvim-telescope/telescope-frecency.nvim",
+  "smartpde/telescope-recent-files",
   config = function()
-    require("telescope").load_extension("frecency")
+    require("telescope").load_extension("recent_files")
   end,
-  dependencies = {"kkharji/sqlite.lua"}
   },
   { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
   { 'renerocksai/telekasten.nvim',
