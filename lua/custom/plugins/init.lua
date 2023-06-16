@@ -43,7 +43,10 @@ return {
       config = function ()
         require('telekasten').setup({
           home = os.getenv("TELEKASTEN_DIR"),
+          dailies = os.getenv("TELEKASTEN_DAILIES_DIR"),
           auto_set_filetype = false,
+          dailies_create_nonexisting = false,
+          subdirs_in_links = false,
       })
       end,
       dependencies = { 'nvim-telescope/telescope.nvim' }
