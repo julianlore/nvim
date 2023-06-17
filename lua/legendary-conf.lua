@@ -1,8 +1,27 @@
 return {
   keymaps = {
+    -- Keymaps for familiarity with other applications
     { '<F1>', "<Cmd>Legendary<CR>" },
-    -- Keymaps for better default experience
-    -- See `:help vim.keymap.set()`
+    { '<C-s>', "<Cmd>w<CR>" },
+
+    -- Arrow key keymaps (sorry)
+    { '<C-Up>', '<C-u>' },
+    { '<C-Down>', '<C-d>' },
+
+    -- Allow navigating command suggestions with arrow keys
+    { '<Up>', { c = function ()
+        if vim.fn.pumvisible() then return '<C-p>' else return '<Up>' end
+      end
+      },
+      opts = { expr = true }
+    },
+    { '<Down>', { c = function ()
+        if vim.fn.pumvisible() then return '<C-n>' else return '<Down>' end
+      end
+      },
+      opts = { expr = true }
+    },
+
     { '<Space>', '<Nop>', opts = { silent = true } },
 
     -- Remap for dealing with word wrap
