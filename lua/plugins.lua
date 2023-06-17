@@ -7,12 +7,18 @@ return {
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- "gc" to comment visual regions/lines
-  'numToStr/Comment.nvim',
-
   'HiPhish/nvim-ts-rainbow2',
   'stevearc/dressing.nvim',
 
+  -- Empty opts => calls config
+  -- "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', opts = {} },
+
+  -- Useful plugin to show you pending keybinds.
+  { 'folke/which-key.nvim', opts = {} },
+
+  { 'windwp/nvim-autopairs', opts = {} },
+  { 'vladdoster/remember.nvim', opts = {} },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -37,8 +43,6 @@ return {
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
 
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -132,12 +136,6 @@ return {
       end,
   },
   {
-    'windwp/nvim-autopairs',
-      config = function ()
-        require('nvim-autopairs').setup {}
-      end
-  },
-  {
   "smartpde/telescope-recent-files",
   config = function()
     require("telescope").load_extension("recent_files")
@@ -162,11 +160,6 @@ return {
         require('project_nvim').setup {
         require('telescope').load_extension('projects')
       }
-      end
-  },
-  { 'vladdoster/remember.nvim',
-      config = function()
-        require('remember').setup {}
       end
   },
   { 'mrjones2014/legendary.nvim',
