@@ -42,7 +42,12 @@ return {
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
-
+  { 'TimUntersberger/neogit',
+    dependencies = 'nvim-lua/plenary.nvim',
+    opts = {
+      -- Replace buffer in current tab on opening, default is opening a new tab
+      kind = "replace"
+    } },
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
