@@ -2,7 +2,7 @@ return {
   keymaps = {
     -- Keymaps for familiarity with other applications
     { '<F1>', "<Cmd>Legendary<CR>" },
-    { '<C-s>', "<Cmd>w<CR>" },
+    { '<C-s>', "<Cmd>w<CR>", mode = { 'n', 'i' } },
 
     -- Arrow key keymaps (sorry)
     { '<C-Up>', '<C-u>' },
@@ -55,9 +55,10 @@ return {
     { '<leader>z<CR>', "<cmd>Telekasten follow_link<CR>", description = "Telekasten Follow Link"},
 
     -- Diagnostics
-    { '[d', vim.diagnostic.goto_prev, "Go to previous diagnostic message" },
-    {']d', vim.diagnostic.goto_next, "Go to next diagnostic message" },
-    {'<leader>e', vim.diagnostic.open_float, "Open floating diagnostic message" },
-    {'<leader>q', vim.diagnostic.setloclist, "Open diagnostics list" },
+    { '[d', vim.diagnostic.goto_prev, description = "Go to previous diagnostic message" },
+    {']d', vim.diagnostic.goto_next, description = "Go to next diagnostic message" },
+    {'<leader>e', vim.diagnostic.open_float, description = "Open floating diagnostic message" },
+    {'<leader>q', vim.diagnostic.setloclist, description = "Open diagnostics list" },
+    {'<leader>p', "<Cmd>Trouble<CR>", description = "[P]roblems"},
   }
 }
