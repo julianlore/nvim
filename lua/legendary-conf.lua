@@ -24,6 +24,8 @@ return {
 
     { '<Space>', '<Nop>', opts = { silent = true } },
 
+    -- Insert - after time in a list, i.e. "- x:xx word" -> "- x:xx - word" in insert mode before word
+    { '<leader>i', "04wi- ", description = "Insert hyphen after time at beginning of list item" },
     -- Remap for dealing with word wrap
     { 'k', "v:count == 0 ? 'gk' : 'k'", opts = { expr = true, silent = true } },
     { 'j', "v:count == 0 ? 'gj' : 'j'", opts = { expr = true, silent = true } },
