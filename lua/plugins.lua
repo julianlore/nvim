@@ -61,6 +61,13 @@ return {
     },
   },
 
+  { "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
   { -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,

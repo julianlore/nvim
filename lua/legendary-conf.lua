@@ -62,5 +62,8 @@ return {
     {'<leader>e', vim.diagnostic.open_float, description = "Open floating diagnostic message" },
     {'<leader>q', vim.diagnostic.setloclist, description = "Open diagnostics list" },
     {'<leader>p', "<Cmd>Trouble<CR>", description = "[P]roblems"},
+
+    -- Git
+    { '<leader>l', "<cmd>LazyGit<CR>", description = "[L]azygit" },
   }
 }
