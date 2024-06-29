@@ -49,16 +49,42 @@ return {
   },
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
-    opts = {
+    config = function()
+      require('gitsigns').setup {
       -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
+        signs = {
+          add = { text = '+' },
+          change = { text = '~' },
+          delete = { text = '_' },
+          topdelete = { text = '‾' },
+          changedelete = { text = '~' },
+        },
+        current_line_blame = true,
+        on_attach = function (buf_nb)
+          local gs = package.loaded.gitsigns
+
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = buf_nb
+            vim.keymap.set(mode, l, r, opts)
+          end
+
+          map('n', ']c', function()
+            if vim.wo.diff then return ']c' end
+            vim.schedule(function() gs.next_hunk() end)
+            return '<Ignore>'
+          end, {expr=true, desc="Git Next [C]hange"})
+
+          map('n', '[c', function()
+            if vim.wo.diff then return '[c' end
+            vim.schedule(function() gs.prev_hunk() end)
+            return '<Ignore>'
+          end, {expr=true, desc="Git Previous [C]hange"})
+
+          map('n', '<leader>hs', gs.stage_hunk, { desc = "[H]unk [S]tage"})
+        end
+      }
+    end
   },
 
   { "kdheepak/lazygit.nvim",
@@ -93,6 +119,7 @@ return {
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
+    main = "ibl",
     opts = {
       char = '┊',
       show_trailing_blankline_indent = false,

@@ -1,8 +1,20 @@
+local function time ()
+  local t, _ = os.date("%I:%M")
+  -- TODO: substring for characters after 0 when string starts with 0, i.e. 05:30
+  -- if (select(1, string.sub(t, 1, 1)) == "0") then
+  --   return select(1, string.sub(t, 2))
+  -- end
+
+  return t
+end
+
 return {
   keymaps = {
     -- Keymaps for familiarity with other applications
     { '<F1>', "<Cmd>Legendary<CR>" },
     { '<C-s>', "<Cmd>w<CR>", mode = { 'n', 'i' } },
+    -- Doesn't work
+    -- { '<C-BS>', { n = "bdw", i = '<C-w>' }, opts = { expr = true } },
 
     -- Arrow key keymaps (sorry)
     { '<C-Up>', '<C-u>' },
@@ -24,8 +36,16 @@ return {
 
     { '<Space>', '<Nop>', opts = { silent = true } },
 
-    -- Insert - after time in a list, i.e. "- x:xx word" -> "- x:xx - word" in insert mode before word
-    { '<leader>i', "04wi- ", description = "Insert hyphen after time at beginning of list item" },
+    { '<leader>at', function ()
+      return "a" .. time() .. " "
+      end, description = "[I]nsert time with hours and minutes in 12 hour format", opts = { expr = true } },
+    -- Insert - and time after time in a list, i.e. "- x:xx word" -> "- x:xx - yy:yy word"
+    { '<leader>ie', function ()
+      return "04wi- " .. time() .. " <Esc>"
+      end, description = "[I]nsert [E]nd time", opts = { expr = true } },
+    { '<leader>id', function ()
+      return "a[[" .. os.date("%Y-%m-%d") .. "]] <Esc>"
+      end, description = "[I]nsert [D]ate", opts = { expr = true } },
     -- Remap for dealing with word wrap
     { 'k', "v:count == 0 ? 'gk' : 'k'", opts = { expr = true, silent = true } },
     { 'j', "v:count == 0 ? 'gj' : 'j'", opts = { expr = true, silent = true } },
@@ -65,5 +85,14 @@ return {
 
     -- Git
     { '<leader>l', "<cmd>LazyGit<CR>", description = "[L]azygit" },
+    { '<leader>GG', "<Cmd>G<CR>", description = "[G]it"},
+    -- Not implemented, implemented in plugin hooks. Included here for documentation/UI.
+    { '<leader>hs', description = "Git [H]unk [S]tage" },
+    { ']c', description = "Git Next [C]hange" },
+    { '[c', description = "Git Previous [C]hange" },
+  },
+  commands = {
+    { ":Trim", ':%s/\\s\\+$//e', description = "Trim trailing whitespace" },
+    { ":Gst", ":Git status", description = "Git status" },
   }
 }
